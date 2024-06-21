@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Showcase</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+<div class="container my-5">
+    <!-- Carrossel de Imagens -->
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+        <div class="carousel-indicators">
+            {% for idx in range(images|length) %}
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ idx }}" {% if idx == 0 %}class="active"{% endif %} aria-current="true" aria-label="Slide {{ idx + 1 }}"></button>
+            {% endfor %}
+        </div>
+        <div class="carousel-inner">
+            {% for image in images %}
+                <div class="carousel-item {% if loop.index == 1 %}active{% endif %}">
+                    <img src="{{ url_for('get_image', filename=image) }}" class="d-block mx-auto img-fluid" alt="...">
+                </div>
+            {% endfor %}
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Anterior</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Próximo</span>
+        </button>
+    </div>
+
+    <!-- Divisão entre o Carrossel e a Galeria -->
+    <div class="divider"><span>Galeria de Imagens</span></div>
+
+    <!-- Galeria de Imagens -->
+    <div class="gallery mt-5">
+        <div class="row">
+            {% for image in images %}
+                <div class="col-6 col-md-4 col-lg-3 mb-4">
+                    <div class="card">
+                        <img src="{{ url_for('get_image', filename=image) }}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ image_descriptions[image] }}</h5>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+body {
+    background: #121212;
+    font-family: 'Arial', sans-serif;
+    color: #e0e0e0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background: #1e1e1e;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    max-width: 1200px;
+    width: 100%;
+}
+
+.carousel-item img {
+    width: auto;
+    max-height: 600px;
+    object-fit: contain;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.carousel-caption {
+    display: none; /* Esconde a legenda no carrossel */
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    filter: invert(1);
+}
+
+.gallery .card {
+    background: #2c2c2c;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.gallery .card img {
+    border-radius: 10px 10px 0 0;
+}
+
+.gallery .card-title {
+    color: #e0e0e0;
+}
+
+/* Estilização para a divisão */
+.divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 3rem 0;
+}
+
+.divider::before,
+.divider::after {
+    content: '';
+    flex: 1;
+    border-bottom: 2px solid #e0e0e0;
+}
+
+.divider:not(:empty)::before {
+    margin-right: .5em;
+}
+
+.divider:not(:empty)::after {
+    margin-left: .5em;
+}
+
+.divider span {
+    font-size: 1.2rem;
+    color: #e0e0e0;
+    background: #1e1e1e;
+    padding: 0 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
